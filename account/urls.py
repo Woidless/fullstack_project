@@ -1,0 +1,12 @@
+from rest_framework_simplejwt.views import TokenRefreshView
+
+# from django import views
+from django.urls import path, re_path
+
+from . import views
+
+
+urlpatterns = [
+    path('register/', views.RegistrationView.as_view()),
+    path('activate/<uuid:activation_code>/', views.ActivationView.as_view()),
+]
