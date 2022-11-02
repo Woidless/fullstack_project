@@ -42,7 +42,8 @@ class UserManager(BaseUserManager):
 class CustomUser(AbstractUser):
     CHOICE_STATUS = (
         ('male', 'male'),
-        ('female', 'female')
+        ('female', 'female'),
+        ('pokemon', 'pokemon')
     )
     email = models.EmailField('email address', unique=True)
     password = models.CharField(max_length=100)
