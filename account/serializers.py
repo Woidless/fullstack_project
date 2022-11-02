@@ -1,4 +1,3 @@
-from pyexpat import model
 from rest_framework_simplejwt.exceptions import TokenError
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework import serializers
