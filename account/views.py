@@ -39,3 +39,19 @@ class ActivationView(APIView):
             return Response({'msg': 'Successfully activated!'}, status=200)
         except User.DoesNotExist:
             return Response({'msg': 'Link expired!'}, status=400)
+
+
+''' Log in/out '''
+
+class LoginView(TokenObtainPairView):
+    permission_classes = (permissions.AllowAny,)
+
+
+class LogoutView(GenericAPIView):
+    serializer_class = serializers.LogoutSerializer
+
+    def post(self, request):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response('Successfully logged out!', status=204)

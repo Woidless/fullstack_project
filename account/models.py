@@ -59,7 +59,7 @@ class CustomUser(AbstractUser):
 
     objects = UserManager()
 
-    USERNAME_FIELD = 'email'
+    USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = []
 
     def __str__(self) -> str:
