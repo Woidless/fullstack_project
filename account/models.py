@@ -4,11 +4,8 @@ from django.contrib.auth.models import AbstractUser
 from django.utils.translation import gettext_lazy as _
 
 
-
-
-
 class UserManager(BaseUserManager):
-    use_in_migrations: bool = True
+    use_in_migrations = True
 
     def _create_user(self, email, password, **kwargs):
         if not email:
@@ -40,19 +37,19 @@ class UserManager(BaseUserManager):
 
 
 class CustomUser(AbstractUser):
-    CHOICE_STATUS = (
-        ('male', 'male'),
-        ('female', 'female'),
-        ('pokemon', 'pokemon')
-    )
+    # CHOICE_STATUS = (
+    #     ('male', 'male'),
+    #     ('female', 'female'),
+    #     ('pokemon', 'pokemon')
+    # )
     email = models.EmailField('email address', unique=True)
     password = models.CharField(max_length=100)
     activation_code = models.CharField(max_length=220, blank=True)
     name = models.CharField(max_length=100)
     surname = models.CharField(max_length=100)
     username = models.CharField(max_length=100, unique=True)
-    sex = models.CharField(max_length=20, 
-                            choices=CHOICE_STATUS)
+    # sex = models.CharField(max_length=20, 
+    #                         choices=CHOICE_STATUS)
     is_active = models.BooleanField(_('active'),
                                     default=False,
                                     help_text=_(

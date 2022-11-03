@@ -129,7 +129,7 @@ MADIA_ROOT = BASE_DIR / 'madia'
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:8080',
     'http://127.0.0.1:8000',
-    'http://localhost:3000',
+    'http://localhost:8080',
 ]
 
 # Default primary key field type
@@ -139,7 +139,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 EMAIL_BECKEND = 'django.core.mail.backends.smpt.EmailBackend'
-EMAIL_HOST = 'smpt.gmail.com'
+EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = config('EMAIL_USER')

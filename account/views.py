@@ -7,7 +7,8 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 
 from django.contrib.auth import get_user_model
 
-from . import serializers, send_email
+from . import serializers
+from .send_email import send_confirmation_email
 
 
 User = get_user_model()
@@ -21,7 +22,7 @@ class RegistrationView(APIView):
         if serializer.is_valid(raise_exception=True):
             user = serializer.save()
             if user:
-                send_email.send_confirmation_email(user.email, user.activation_code)
+                send_confirmation_email(user=user.email, code=user.activation_code)
             return Response(serializer.data, status=201)
         return Response('Bad request!!!', status=400)
 
