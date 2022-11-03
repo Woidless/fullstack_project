@@ -57,3 +57,38 @@ class LogoutSerializer(serializers.Serializer):
             self.fail('bad_token')
 
     
+class ForgotPasswordSerializer(serializers.Serializer):
+    email = serializers.EmailField(max_length=100,
+                                        required=True)
+
+
+class RestorePasswordSerializer(serializers.Serializer):
+    code = serializers.CharField(max_length=100, required=True)
+    password = serializers.CharField(min_length=8, required=True, write_only=True)
+    password2 = serializers.CharField(min_length=8, required=True, write_only=True)
+
+    def validate(self, attrs):
+        password2 = attrs.pop('password2')
+        if attrs['password'] != password2:
+            raise serializers.ValidationError('Passwords did not match!')
+        # if not attrs['password'].isalnum():
+        #     raise serializers.ValidationError('Password field must contain'
+        #                                       'alpha symbols and numbers!')
+        try:
+            user = User.objects.get(
+                activation_code=attrs['code']
+            )
+        except User.DoesNotExist:
+            raise serializers.ValidationError(
+                'Invalid code'
+            )
+        attrs['user'] = user
+        return attrs
+    
+    def save(self, **kwargs):
+        data = self.validated_data
+        user = data['user']
+        user.set_password(data['password'])
+        user.activate_code = ''
+        user.save()
+        return user

@@ -12,3 +12,13 @@ def send_confirmation_email(user, code):
     )
 
 
+def send_code_password_reset(user):
+    code = user.activation_code
+    email = user.email
+    send_mail(
+        'Code for restore',
+        f'Your code: {code}',
+        'abdb2226@gmail.com',
+        [email],
+        fail_silently=False
+    )
