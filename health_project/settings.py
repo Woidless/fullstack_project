@@ -31,6 +31,13 @@ INSTALLED_APPS = [
 
     # my_apps
     'account',
+    'category',
+    'crud',
+    'rating',
+    'recomendations',
+    'search',
+    'shop',
+    'sportcrud',
 ]
 
 MIDDLEWARE = [
@@ -122,8 +129,8 @@ STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
-MADIA_URL = 'madia/'
-MADIA_ROOT = BASE_DIR / 'madia'
+MEDIA_URL = 'media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ORIGIN_WHITELIST = [
