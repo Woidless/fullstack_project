@@ -3,7 +3,7 @@ from account.models import CustomUser
 
 
 class Person(models.Model):
-    owner = models.ForeignKey(CustomUser, max_length=100, on_delete=models.CASCADE, related_name='person')
+    owner = models.ForeignKey(CustomUser, max_length=100, on_delete=models.CASCADE, related_name='person', blank=True)
     age =  models.DecimalField('Возраст', max_digits=10, decimal_places=2)
     height = models.DecimalField('Рост', max_digits=10, decimal_places=2)
     weight = models.DecimalField('Вес', max_digits=10, decimal_places=2)
@@ -15,6 +15,5 @@ class Person(models.Model):
     illness = models.CharField('Болезнь', max_length=100, blank=True)
     person_images = models.ImageField('Фотография', max_length=100, blank=True)
     
-
     def __str__(self) -> str:
         return f'{self.owner.name}  {self.owner.surname}  Σ(°△°|||)' 

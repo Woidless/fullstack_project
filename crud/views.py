@@ -23,6 +23,7 @@ class PersonViewSet(ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
+    
     # api/v1/products/<id>/reviews/
     @action(['GET', 'POST'], detail=True)
     def reviews(self, request, pk):
