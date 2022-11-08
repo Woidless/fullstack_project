@@ -8,10 +8,10 @@ class PersonListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Person
-        fields = ('age', 'height', 'weight',
+        fields = ('owner', 'age', 'height', 'weight',
                     'sex', 'blood_type', 'allergy', 
                     'symptoms', 'disability',
-                    'injury', 'illness', 'person_images','owner')
+                    'injury', 'illness', 'person_images')
 
     # def to_representation(self, instance):
     #     drs = super().to_representation(instance=instance)

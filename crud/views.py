@@ -12,11 +12,7 @@ User = get_user_model()
 class PersonViewSet(ModelViewSet):
     queryset = Person.objects.all()
     serializer_class = serializers.PersonListSerializer
-    # [print(i) for i in queryset.values()]
-    # queryset = [i for i in queryset.values()]
-    # queryset = [(i['owner_id']) for i in queryset]
     id_all_person = [i['owner_id'] for i in queryset.values()]
-    # print(queryset)
 
     def get_permissions(self):
         if self.request.method == 'GET':
@@ -29,8 +25,6 @@ class PersonViewSet(ModelViewSet):
                     # response.Response('У вас уже есть персонаж', status=400)
                     return [permissions.IsAdminUser()]
             return [permissions.IsAuthenticated(), IsAuthor()]
-
-    # permission_classes = [permissions.IsAdminUser() if User.id in id_all_person else permissions.IsAuthenticated(), IsAuthor()]
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
