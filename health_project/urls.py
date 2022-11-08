@@ -31,10 +31,10 @@ schema_view = get_schema_view(
 
 router = SimpleRouter()
 
-router.register('categories', CategoryViewSet)
-router.register('crud', PersonViewSet)
+# router.register('categories', CategoryViewSet)
+# router.register('crud', PersonViewSet)
 # router.register('rating', )
-router.register('shop', ShopViewSet)
+# router.register('shop', ShopViewSet)
 # router.register('sportcrud', sportcrud)
 
 urlpatterns = [
@@ -42,8 +42,7 @@ urlpatterns = [
    path('docs/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
    re_path(r'^redoc/$', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 
-   path('', include('crud.urls')),
-   path('api/v1/', include(router.urls)),
+   path('person/', include('crud.urls')),
    path('admin/', admin.site.urls),
    path('accounts/', include('account.urls')),
 ]

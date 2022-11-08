@@ -48,8 +48,6 @@ class CustomUser(AbstractUser):
     name = models.CharField(max_length=100)
     surname = models.CharField(max_length=100)
     username = models.CharField(max_length=100, unique=True)
-    # sex = models.CharField(max_length=20, 
-    #                         choices=CHOICE_STATUS)
     is_active = models.BooleanField(_('active'),
                                     default=False,
                                     help_text=_(
