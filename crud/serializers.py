@@ -11,7 +11,7 @@ class PersonListSerializer(serializers.ModelSerializer):
         fields = ('id','owner', 'age', 'height', 'weight',
                     'sex', 'blood_type', 'allergy', 
                     'symptoms', 'disability',
-                    'injury', 'illness', 'person_images')
+                    'injury', 'illness')
 
     # def to_representation(self, instance):
     #     drs = super().to_representation(instance=instance)
