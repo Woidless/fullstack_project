@@ -16,19 +16,21 @@ class PersonViewSet(ModelViewSet):
     def get_permissions(self):
         if self.request.method == 'GET':
             return [permissions.AllowAny()]
-        else:
-            if self.request.method == 'POST':
-                try:    
-                    if User.person_status:
-                        return [permissions.IsAdminUser()]
-                except:
-                    User.person_status = True
-                    return [permissions.IsAuthenticated(), IsAuthor()]         
-            User.person_status = True
-            return [permissions.IsAuthenticated(), IsAuthor()]
+        return [permissions.IsAuthenticated(), IsAuthor()]
+
+    # @action(['DELETE'], detail=True)
+    # def delete_person(self, request, pk):
+    #     if request.method == 'DELETE':
+    #         if User.person_status:
+    #             if self.user == User.owner:
+    #                 User.person_status = False
+    #                 return response.Response('Deleted', status=204)
+    #         return response.Response('Персонажа нет', status=400)
+
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
+        serializer.save(status=self.request.user.email)
     
     # def create(self, request, *args, **kwargs):
     #     print(request.data, '!!!!!!!!!!!!!!')

@@ -6,10 +6,12 @@ User = get_user_model()
 
 class Person(models.Model):
     owner = models.ForeignKey(User, 
+                            unique=True,
                             max_length=100,
                             on_delete=models.RESTRICT,
                             related_name='person',
-                            blank=True)
+                            blank=True
+                            )
     name = models.CharField('Имя',max_length=100, blank=True)
     surname = models.CharField('Фамилия' ,max_length=100, blank=True)
     age =  models.DecimalField('Возраст', max_digits=10, decimal_places=0)
@@ -23,6 +25,6 @@ class Person(models.Model):
     injury = models.CharField('Травма', max_length=100, blank=True)
     illness = models.CharField('Болезнь', max_length=100, blank=True)
     person_images = models.ImageField('Фотография', max_length=100, blank=True)
-    
+
     def __str__(self) -> str:
         return f'{self.owner.email}  Σ(°△°|||)' 
