@@ -9,7 +9,6 @@ from . import serializers
 
 
 class ShopViewSet(ModelViewSet):
-
     queryset = Shop.objects.all()
 
     def get_serializer_class(self):

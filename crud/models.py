@@ -7,7 +7,7 @@ User = get_user_model()
 class Person(models.Model):
     owner = models.ForeignKey(User, 
                             max_length=100,
-                            on_delete=models.CASCADE,
+                            on_delete=models.RESTRICT,
                             related_name='person',
                             blank=True)
     age =  models.DecimalField('Возраст', max_digits=10, decimal_places=0)

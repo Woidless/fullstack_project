@@ -10,7 +10,7 @@ class CategoryViewSet(ModelViewSet):
     serializer_class = serializers.CategorySerializer
 
     def get_permissions(self):
-        if self.action in ('retrieve', 'list'):
+        if self.request.method == 'GET':
             return [permissions.AllowAny()]
         else:
             return [permissions.IsAdminUser()]
