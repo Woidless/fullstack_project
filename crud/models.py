@@ -10,6 +10,8 @@ class Person(models.Model):
                             on_delete=models.RESTRICT,
                             related_name='person',
                             blank=True)
+    name = models.CharField(max_length=100)
+    surname = models.CharField(max_length=100)
     age =  models.DecimalField('Возраст', max_digits=10, decimal_places=0)
     height = models.DecimalField('Рост', max_digits=10, decimal_places=0)
     weight = models.DecimalField('Вес', max_digits=10, decimal_places=0)
@@ -20,7 +22,7 @@ class Person(models.Model):
     disability = models.CharField('Инвалидность', max_length=100, blank=True)
     injury = models.CharField('Травма', max_length=100, blank=True)
     illness = models.CharField('Болезнь', max_length=100, blank=True)
-    # person_images = models.ImageField('Фотография', max_length=100, blank=True)
+    person_images = models.ImageField('Фотография', max_length=100, blank=True)
     
     def __str__(self) -> str:
-        return f'{self.owner.name}  {self.owner.surname}  Σ(°△°|||)' 
+        return f'{self.owner.email}  Σ(°△°|||)' 

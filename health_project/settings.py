@@ -12,6 +12,7 @@ DEBUG = config('DEBUG', cast=bool)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS').split()
 
+APPEND_SLASH = True
 
 INSTALLED_APPS = [
     'django.contrib.admin',
