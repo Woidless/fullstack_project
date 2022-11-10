@@ -13,8 +13,6 @@ class ShopViewSet(ModelViewSet):
     queryset = Shop.objects.all()
     serializer_class = ShopSerializers
 
-
-
     def get_permissions(self):
         if self.request.method == 'GET':
             return [permissions.AllowAny()]
