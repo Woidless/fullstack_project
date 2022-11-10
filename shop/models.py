@@ -8,7 +8,7 @@ class Shop(models.Model):
     title = models.CharField(max_length=30, unique=True)
     photo = models.ImageField(upload_to='shop_photo')
     description = models.TextField(max_length=500, blank=True)
-    price = models.DecimalField('Возраст', max_digits=10, decimal_places=2)
+    price = models.DecimalField('Цена', max_digits=10, decimal_places=2)
     category = models.ForeignKey(Category,
                                 related_name='products',
                                 on_delete=models.SET_NULL,
