@@ -7,7 +7,4 @@ class PersonListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Person
-        fields = ('id','owner', 'age', 'name', 'surname',
-                    'height', 'weight','sex', 'blood_type',
-                    'allergy', 'symptoms', 'disability',
-                    'injury', 'illness', 'person_images',)
+        fields = ('__all__')
