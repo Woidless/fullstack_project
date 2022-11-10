@@ -31,12 +31,6 @@ schema_view = get_schema_view(
 
 router = SimpleRouter()
 
-# router.register('categories', CategoryViewSet)
-# router.register('crud', PersonViewSet)
-# router.register('rating', )
-# router.register('shop', ShopViewSet)
-# router.register('sportcrud', sportcrud)
-
 urlpatterns = [
    re_path(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
    path('docs/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
@@ -45,6 +39,8 @@ urlpatterns = [
    path('person/', include('crud.urls')),
    path('admin/', admin.site.urls),
    path('accounts/', include('account.urls')),
+   path('category/', include('category.urls')),
+   path('shop/', include('shop.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
