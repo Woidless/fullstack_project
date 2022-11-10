@@ -24,7 +24,7 @@ class Person(models.Model):
     disability = models.CharField('Инвалидность', max_length=100, blank=True)
     injury = models.CharField('Травма', max_length=100, blank=True)
     illness = models.CharField('Болезнь', max_length=100, blank=True)
-    person_images = models.ImageField('Фотография', max_length=100, blank=True)
+    person_images = models.ImageField(upload_to='images')
 
     def __str__(self) -> str:
         return f'{self.owner.email}  Σ(°△°|||)' 
