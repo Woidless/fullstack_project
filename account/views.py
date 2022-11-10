@@ -8,7 +8,9 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from django.contrib.auth import get_user_model
 
 from . import serializers
-from .send_email import send_confirmation_email, send_code_password_reset
+from .send_email import (send_confirmation_email,
+                        send_code_password_reset,
+                        send_notification,)
 
 
 User = get_user_model()
@@ -81,13 +83,18 @@ class ForgotPasswordView(APIView):
             )
 
 
-class RestorePasswordView(APIView):
-    permission_classes = (permissions.AllowAny,)
+class OrderEmail(APIView):
+    permission_classes = (permissions.IsAuthenticated,)
 
     def post(self, request):
-        serializer = serializers.RestorePasswordSerializer(
-            data=request.data
-        )
+        serializer = serializers.OrderEmailSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        serializer.save()
-        return Response('Password change successfully!')
+        try:
+            email = serializer.data.get('email')
+            user = User.objects.get(email=email)
+            send_notification(user=user, total_price=serializer.data.get('total_price'))
+            return Response
+        except:
+            return Response(
+                status=400,
+            )

@@ -22,3 +22,15 @@ def send_code_password_reset(user):
         [email],
         fail_silently=False
     )
+
+
+
+def send_notification(user, total_price):
+    email = user.email
+    send_mail(
+        'Уведомление о создании заказа',
+        f'Вы создали заказ потвержден,\Стоимость заказа: {total_price}\nОжидайте звонка!\nСпасибо за покупку',
+        'abdb2226@gmail.com',
+        [email],
+        fail_silently=False
+    )
