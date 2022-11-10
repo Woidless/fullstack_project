@@ -18,16 +18,6 @@ class PersonViewSet(ModelViewSet):
             return [permissions.AllowAny()]
         return [permissions.IsAuthenticated(), IsAuthor()]
 
-    # @action(['DELETE'], detail=True)
-    # def delete_person(self, request, pk):
-    #     if request.method == 'DELETE':
-    #         if User.person_status:
-    #             if self.user == User.owner:
-    #                 User.person_status = False
-    #                 return response.Response('Deleted', status=204)
-    #         return response.Response('Персонажа нет', status=400)
-
-
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
         serializer.save(status=self.request.user.email)
