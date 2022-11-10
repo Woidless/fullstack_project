@@ -11,8 +11,3 @@ class PersonListSerializer(serializers.ModelSerializer):
                     'height', 'weight','sex', 'blood_type',
                     'allergy', 'symptoms', 'disability',
                     'injury', 'illness', 'person_images',)
-
-    # def to_representation(self, instance):
-    #     drs = super().to_representation(instance=instance)
-    #     drs['rating'] = instance.reviews.aggregate(Avg('rating'))['rating_avg']
-    #     return drs
