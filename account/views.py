@@ -93,7 +93,7 @@ class OrderEmail(APIView):
             email = serializer.data.get('email')
             user = User.objects.get(email=email)
             send_notification(user=user, total_price=serializer.data.get('total_price'))
-            return Response
+            return Response('Check order status in your email!', status=204)
         except:
             return Response(
                 status=400,
