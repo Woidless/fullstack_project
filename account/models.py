@@ -40,8 +40,8 @@ class CustomUser(AbstractUser):
     email = models.EmailField('email address', unique=True)
     username = models.CharField(max_length=100, unique=True)
     password = models.CharField(max_length=100)
-    sex = models.CharField(max_length=100)
-    age = models.DecimalField(max_digits=10, decimal_places=0)
+    sex = models.CharField(max_length=100, blank=True, null=True)
+    age = models.DecimalField(max_digits=10, decimal_places=0, blank=True, null=True)
     is_active = models.BooleanField(_('active'),
                                     default=False,
                                     help_text=_(
