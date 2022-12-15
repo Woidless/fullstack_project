@@ -22,6 +22,8 @@ class RegisterSerializer(serializers.ModelSerializer):
                 'password',
                 'password2',
                 'username',
+                'sex',
+                'age',
                 )
 
     def validate(self, attrs):
@@ -91,10 +93,3 @@ class RestorePasswordSerializer(serializers.Serializer):
         user.save()
         return user
 
-
-
-class OrderEmailSerializer(serializers.Serializer):
-    email = serializers.CharField(max_length=100, required=True)
-    number = serializers.CharField(max_length=100, required=True)
-    address = serializers.CharField(max_length=100, required=True)
-    total_price = serializers.DecimalField(max_digits=100, decimal_places=2)

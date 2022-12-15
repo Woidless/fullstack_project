@@ -9,8 +9,7 @@ from django.contrib.auth import get_user_model
 
 from . import serializers
 from .send_email import (send_confirmation_email,
-                        send_code_password_reset,
-                        send_notification,)
+                        send_code_password_reset,)
 
 
 User = get_user_model()
@@ -25,7 +24,7 @@ class RegistrationView(APIView):
             user = serializer.save()
             if user:
                 send_confirmation_email(user=user.email, code=user.activation_code)
-            return Response(serializer.data, status=201)
+            return Response('Send on your email', status=201)
         return Response('Bad request!!!', status=400)
 
 
@@ -80,21 +79,4 @@ class ForgotPasswordView(APIView):
             return Response(
                 'User with this email doesn\'t exist',
                 status=400
-            )
-
-
-class OrderEmail(APIView):
-    permission_classes = (permissions.IsAuthenticated,)
-
-    def post(self, request):
-        serializer = serializers.OrderEmailSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        try:
-            email = serializer.data.get('email')
-            user = User.objects.get(email=email)
-            send_notification(user=user, total_price=serializer.data.get('total_price'))
-            return Response('Check order status in your email!', status=204)
-        except:
-            return Response(
-                status=400,
             )

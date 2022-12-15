@@ -32,13 +32,7 @@ INSTALLED_APPS = [
 
     # my_apps
     'account',
-    'category',
     'crud',
-    'rating',
-    'recomendations',
-    'search',
-    'shop',
-    'sportcrud',
 ]
 
 MIDDLEWARE = [

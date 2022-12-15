@@ -10,7 +10,7 @@ class Person(models.Model):
                             max_length=100,
                             on_delete=models.RESTRICT,
                             related_name='person',
-                            blank=True
+                            blank=True,
                             )
     name = models.CharField('Имя',max_length=100, blank=True)
     surname = models.CharField('Фамилия' ,max_length=100, blank=True)

@@ -37,22 +37,19 @@ class UserManager(BaseUserManager):
 
 
 class CustomUser(AbstractUser):
-    # CHOICE_STATUS = (
-    #     ('male', 'male'),
-    #     ('female', 'female'),
-    #     ('pokemon', 'pokemon')
-    # )
     email = models.EmailField('email address', unique=True)
-    password = models.CharField(max_length=100)
-    activation_code = models.CharField(max_length=220, blank=True)
     username = models.CharField(max_length=100, unique=True)
-    person_status = models.BooleanField(default=False)
+    password = models.CharField(max_length=100)
+    sex = models.CharField(max_length=100)
+    age = models.DecimalField(max_digits=10, decimal_places=0)
     is_active = models.BooleanField(_('active'),
                                     default=False,
                                     help_text=_(
                                         'Designates whether this user should be treted as active.'
                                         'Unselect this instead of deleting accounts.'
                                     ))
+    activation_code = models.CharField(max_length=220, blank=True)
+    # person_status = models.BooleanField(default=False)
 
     objects = UserManager()
 

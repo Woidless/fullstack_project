@@ -9,12 +9,6 @@ from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 
-from category.views  import CategoryViewSet
-from crud.views  import PersonViewSet
-from shop.views  import ShopViewSet
-from sportcrud.views  import sportcrud
-
-
 
 schema_view = get_schema_view(
    openapi.Info(
@@ -39,8 +33,6 @@ urlpatterns = [
    path('person/', include('crud.urls')),
    path('admin/', admin.site.urls),
    path('accounts/', include('account.urls')),
-   path('category/', include('category.urls')),
-   path('shop/', include('shop.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
