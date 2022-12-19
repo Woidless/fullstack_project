@@ -12,19 +12,11 @@ class Person(models.Model):
                             related_name='person',
                             blank=True,
                             )
-    name = models.CharField('Имя',max_length=100, blank=True)
-    surname = models.CharField('Фамилия' ,max_length=100, blank=True)
     age =  models.DecimalField('Возраст', max_digits=10, decimal_places=0)
     height = models.DecimalField('Рост', max_digits=10, decimal_places=0)
-    weight = models.DecimalField('Вес', max_digits=10, decimal_places=0)
-    sex = models.CharField('Пол', max_length=10, blank=True)
-    blood_type = models.CharField('Группа крови', max_length=10, blank=True)
-    allergy = models.CharField('Аллергия', max_length=100, blank=True)
-    symptoms = models.CharField('Симптомы', max_length=500, blank=True)
-    disability = models.CharField('Инвалидность', max_length=100, blank=True)
-    injury = models.CharField('Травма', max_length=100, blank=True)
-    illness = models.CharField('Болезнь', max_length=100, blank=True)
-    person_images = models.ImageField(upload_to='images')
+    weight_now = models.DecimalField('Текущий ес', max_digits=10, decimal_places=0)
+    weight_want = models.DecimalField('Желаемый вес', max_digits=10, decimal_places=0)
+    gender = models.CharField('Пол', max_length=10, blank=True)
 
     def __str__(self) -> str:
         return f'{self.owner.email}  Σ(°△°|||)' 

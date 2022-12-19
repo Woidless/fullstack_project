@@ -22,7 +22,7 @@ class RegisterSerializer(serializers.ModelSerializer):
                 'password',
                 'password2',
                 'username',
-                'sex',
+                'gender',
                 'age',
                 )
 
