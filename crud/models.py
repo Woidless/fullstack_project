@@ -19,6 +19,7 @@ class Person(models.Model):
     weight_now = models.DecimalField('Текущий вес', max_digits=10, decimal_places=0)
     weight_want = models.DecimalField('Желаемый вес', max_digits=10, decimal_places=0)
     gender = models.CharField('Пол', max_length=10, blank=True)
+    massa = models.DecimalField('Масса', max_digits=10, decimal_places=2)
 
     def __str__(self) -> str:
-        return f'{self.owner.username} Σ(°△°|||)' 
+        return f'{self.owner.email} Σ(°△°|||)' 
