@@ -9,7 +9,7 @@ class Person(models.Model):
     owner = models.ForeignKey(User,
                             unique=True,
                             max_length=100,
-                            on_delete=models.RESTRICT,
+                            on_delete=models.CASCADE,
                             related_name='person',
                             blank=True,
                             )
