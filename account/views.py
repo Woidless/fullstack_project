@@ -80,3 +80,9 @@ class ForgotPasswordView(APIView):
                 'User with this email doesn\'t exist',
                 status=400
             )
+
+
+
+class RestoreView(TokenObtainPairView):
+    permission_classes = (permissions.AllowAny,)
+    serializer_class = serializers.RestorePasswordSerializer
