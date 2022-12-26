@@ -33,6 +33,9 @@ urlpatterns = [
    path('person/', include('crud.urls')),
    path('admin/', admin.site.urls),
    path('accounts/', include('account.urls')),
+   
+   path('dish_menu/', include('crud_menu.urls')),
+   path('parcer/', include('parcer.urls'))
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
