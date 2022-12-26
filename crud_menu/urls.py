@@ -3,7 +3,7 @@ from rest_framework.routers import DefaultRouter
 from . import views
 
 router = DefaultRouter()
-router.register('', views.DishMenuViewSet, basename='dish_menu/')
+router.register('', views.DishMenuViewSet, basename='dish_menu')
 
 urlpatterns = [
     path('', include(router.urls))
