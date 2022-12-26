@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -48,7 +49,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
     # inst_apps
-    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'health_project.urls'
@@ -138,7 +138,7 @@ CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',
     'http://34.28.220.66',
     'http://34.133.205.247',
-    # 'http://34.133.205.247',
+    'http://34.133.205.247',
 ]
 
 # Default primary key field type
