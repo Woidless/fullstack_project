@@ -1,9 +1,7 @@
 from django.db import models
 from account.models import CustomUser
 from django.contrib.auth import get_user_model
-from account.models import CustomUser
 
-all_user = CustomUser.objects.all()
 User = get_user_model()
 
 class Person(models.Model):

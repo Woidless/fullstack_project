@@ -6,5 +6,5 @@ router = DefaultRouter()
 router.register('', views.DishMenuViewSet, basename='dish_menu')
 
 urlpatterns = [
-    path('addDish', include(router.urls))
+    path('addDish/', include(router.urls))
 ]
