@@ -12,7 +12,7 @@ class DishMenuViewSet(ModelViewSet):
 
     def get_permissions(self):
         if self.request.method == 'GET': return [permissions.AllowAny()]
-        return [permissions.IsAuthenticated(), permissions.IsAdminUser()]
+        return [permissions.IsAuthenticated(), IsAuthor()]
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
