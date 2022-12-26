@@ -3,6 +3,7 @@ from account.models import CustomUser
 from django.contrib.auth import get_user_model
 from account.models import CustomUser
 
+all_user = CustomUser.objects.all()
 User = get_user_model()
 
 class Person(models.Model):
@@ -20,6 +21,7 @@ class Person(models.Model):
     weight_want = models.DecimalField('Желаемый вес', max_digits=10, decimal_places=0)
     gender = models.CharField('Пол', max_length=10, blank=True)
     massa = models.DecimalField('Масса', max_digits=10, decimal_places=2)
+
 
     def __str__(self) -> str:
         return f'{self.owner.email} Σ(°△°|||)' 

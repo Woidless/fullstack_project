@@ -48,6 +48,7 @@ class CustomUser(AbstractUser):
                                         'Designates whether this user should be treted as active.'
                                         'Unselect this instead of deleting accounts.'
                                     ))
+    
     activation_code = models.CharField(max_length=220, blank=True)
     # person_status = models.BooleanField(default=False)
 

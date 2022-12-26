@@ -33,6 +33,9 @@ INSTALLED_APPS = [
     # my_apps
     'account',
     'crud',
+    'crud_menu',
+    'parcer',
+    
 ]
 
 MIDDLEWARE = [
